@@ -295,3 +295,20 @@ button:focus, input:focus, textarea:focus {
     outline: 3px solid #4CAF50;
     outline-offset: 2px;
 }
+.user-info {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info div {
+    margin-bottom: 10px;
+}
+
+.user-info span {
+    font-weight: bold;
+}
