@@ -268,6 +268,12 @@ header {
     align-items: center;
 }
 
+span{
+    font-weight:600;
+    font-size:22px;
+    color:black;
+}
+
 button:focus, input:focus, textarea:focus {
     outline: 3px solid #4CAF50;
     outline-offset: 2px;
