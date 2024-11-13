@@ -1,0 +1,274 @@
+
+body {
+    font-family: 'Poppins', Arial, sans-serif; 
+    background-image: url(Background.jpg); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #23423d; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #23423d;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+
+.monthly-input,
+.expense-input,
+.plan-input {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.monthly-income {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border: 1px solid #23423d;
+    padding: 10px;
+    font-family: 'Poppins', Arial, sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #23423d;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#response, #plan-response {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border: 1px solid #23423d;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+#map {
+    width: 700px;
+    height: 400px;
+    max-width: 50%;
+    border: 2px solid #23423d;
+    border-radius: 10px;
+}
+
+#expenses-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    font-family: 'Poppins', Arial, sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#expenses-table th, #expenses-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: left;
+    color: #23423d;
+}
+
+#expenses-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 500;
+}
+
+#expenses-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.form-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #23423d;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #23423d;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #23423d;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+#start-btn, .expense-input button {
+    margin-left: 10px;
+    padding: 12px 24px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+#start-btn:hover, .expense-input button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#monthly-income {
+    width: 55%;
+    max-width: 500px;
+    padding: 9px;
+    margin-bottom: 10px;
+    border: 1px solid #23423d;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #23423d;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+#financial-summary {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+#financial-summary th, #financial-summary td {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    text-align: center;
+    color: #23423d;
+}
+
+#financial-summary th {
+    background-color: #4CAF50;
+    font-weight: 500;
+    color: white;
+}
+
+#financial-summary tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: #d4f5e3;
+    padding: 20px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.register-container h1 {
+    font-size: 2em;
+    color: #23423d;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.register-container p {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #23423d;
+}
+
+.senecash-logo {
+    width: 150px;
+    height: auto;
+}
+
+nav a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #e0e0e0;
+}
+
+header {
+    width: 100%;
+    background-color: #4CAF50;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button:focus, input:focus, textarea:focus {
+    outline: 3px solid #4CAF50;
+    outline-offset: 2px;
+}
