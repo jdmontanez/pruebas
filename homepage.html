@@ -1,58 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="es">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <style>
-        body{
-            background-image: url(Background.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-    
-        }
-        h1{
-            text-align:center;
+    <title>Barra de Navegación</title>
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-        }
-        button{
-            color:blueviolet;
-            background-color:#c9d6ff;
-            padding:5px;
-            border-radius:5px;
-            font-size:1rem;
-            font-weight:bold;
-            border:none;
-        }
-        button:hover{
-            text-decoration: underline;
-            color:blue;
-        }
-        button, div{
-            margin-left:15%;
-            font-size:20px;
-            padding:10px;
-        }
-        div{
-            font-weight:400;
-            color:rgb(12,11,11);
-
-        }
-        span{
-            font-weight:600;
-            font-size:22px;
-            color:black;
-        }
-    </style>
-    <script type="module" src="./homepage.js"></script>
 </head>
 <body>
-    <h1>Welcome to the Homepage</h1>
-    <div>First Name: <span id="loggedUserFName"></span></div>
-    <div>Last Name: <span id="loggedUserLName"></span></div>
-    <div>Email: <span id="loggedUserEmail"></span></div>
+    <header>
+        <div class="logo">
+            <img src="SENECASH.png" alt="Senecash Logo" class="senecash-logo">
+        </div>
+    
+    </header>
+    
+
+<body>
+    <h1>Gestión de Finanzas - UniAndes</h1>
+
+    <body>
+       
+        <div>Nombre: <span id="loggedUserFName"></span></div>
+        <div>Apellido: <span id="loggedUserLName"></span></div>
+        <div>Email: <span id="loggedUserEmail"></span></div>
+        
+    </body>
+
+    <!-- Sección de Ingreso de Mensualidad -->
+    <div class="monthly-input">
+        <input type="number" id="monthly-income" placeholder="Ingresa tu mensualidad">
+        <button onclick="setMonthlyIncome()">Guardar Mensualidad</button>
+    </div>
+
+    <!-- Sección del Mapa -->
+    <div id="map"></div>
+
+    <!-- Sección para ingresar datos de gastos con reconocimiento de voz -->
+    <div class="expense-input">
+        <div class="expense-group">
+            <label for="amount">Monto</label>
+            <textarea id="amount" rows="1" placeholder="Monto"></textarea>
+        </div>
+        <div class="expense-group">
+            <label for="description">Descripción</label>
+            <textarea id="description" rows="1" placeholder="Describe tu gasto..."></textarea>
+        </div>
+        <button onclick="saveExpense()">Enviar</button>
+        <!-- Botón para iniciar reconocimiento de voz -->
+        <button id="start-btn">Oprima para hablar</button>
+    </div>
+    <p id="transcription">La transcripción aparecerá aquí...</p>
+
+    <!-- Tabla de Gastos Recientes -->
+    <h2>Gastos Recientes</h2>
+    <table id="expenses-table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="1"><strong>Total:</strong></td>
+                <td id="total-amount">0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="mapa.js"></script>
+    <script>
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'es-ES';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            const startBtn = document.getElementById('start-btn');
+            const transcription = document.getElementById('transcription');
+            const descriptionInput = document.getElementById('description');
+
+            startBtn.addEventListener('click', () => {
+                recognition.start();
+                transcription.textContent = "Escuchando...";
+            });
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                descriptionInput.value = transcript;
+                transcription.textContent = "Transcripción completada.";
+            };
+
+            recognition.onerror = (event) => {
+                transcription.textContent = 'Error: ' + event.error;
+            };
+
+        } else {
+            alert("El reconocimiento de voz no es compatible con este navegador. Utiliza Chrome o un navegador compatible.");
+        }
+
+        // Función para guardar el gasto en la tabla
+        function saveExpense() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const description = document.getElementById("description").value;
+            const date = new Date().toLocaleDateString();
+
+            if (amount && description) {
+                const table = document.getElementById("expenses-table").getElementsByTagName("tbody")[0];
+                const newRow = table.insertRow();
+
+                const dateCell = newRow.insertCell(0);
+                const amountCell = newRow.insertCell(1);
+                const descriptionCell = newRow.insertCell(2);
+
+                dateCell.textContent = date;
+                amountCell.textContent = amount.toFixed(2);
+                descriptionCell.textContent = description;
+
+                updateTotalAmount();
+
+                // Limpiar los campos después de guardar
+                document.getElementById("amount").value = "";
+                document.getElementById("description").value = "";
+            } else {
+               
+            }
+        }
+
+        // Función para actualizar el total de montos en la tabla
+        function updateTotalAmount() {
+            const table = document.getElementById("expenses-table").getElementsByTagName("tbody")[0];
+            let total = 0;
+
+            for (let i = 0; i < table.rows.length; i++) {
+                const amount = parseFloat(table.rows[i].cells[1].textContent);
+                total += amount;
+            }
+
+            document.getElementById("total-amount").textContent = total.toFixed(2);
+        }
+    </script>
+    <!-- Tabla de Resumen Financiero -->
+    <h2>Resumen Financiero</h2>
+    <table id="financial-summary">
+        <thead>
+            <tr>
+                <th>Mensualidad</th>
+                <th>Total de Gastos</th>
+                <th>Saldo Restante</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="monthly-income-value">0</td>
+                <td id="total-expenses-value">0</td>
+                <td id="remaining-balance">0</td>
+            </tr>
+        </tbody>
+    </table>
     <button id="logout">Logout</button>
 </body>
 </html>
