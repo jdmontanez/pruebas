@@ -8,7 +8,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background: url("Background.jpg");
+    background: url("images/1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -92,17 +92,20 @@ body{
     position: absolute;
     left: 4px;
     width: 500px;
+    height: auto;
     display: flex;
     flex-direction: column;
     transition: .5s ease-in-out;
 }
 .register-container{
-    position: absolute;
-    right: -520px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
+    position: absolute; 
+    right: -520px; 
+    width: 500px; 
+    height:400 px; 
+    display: flex; 
+    flex-direction: column; 
     transition: .5s ease-in-out;
+   
 }
 .top span{
     color: #fff;
@@ -146,7 +149,7 @@ header{
 }
 .input-box i{
     position: relative;
-    top: -35px;
+    top: 37px;
     left: 17px;
     color: #fff;
 }
