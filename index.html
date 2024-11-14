@@ -9,7 +9,30 @@
     <script type="module" src="firebaseauth.js"></script>
 </head>
 <body>
+  <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>LOGO .</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#" class="link active">Home</a></li>
+                <li><a href="#" class="link">Blog</a></li>
+                <li><a href="#" class="link">Services</a></li>
+                <li><a href="#" class="link">About</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+            <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+  <!----------------------------- Form box ----------------------------------->    
     <div class="container" id="signup" style="display:none;">
+      <!------------------- login form -------------------------->
       <h1 class="form-title">Register</h1>
       <form method="post" action="">
         <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
@@ -39,15 +62,14 @@
         ----------or--------
       </p>
       <div class="icons">
-        <i class="fab fa-google"></i>
-        <i class="fab fa-facebook"></i>
+        
       </div>
       <div class="links">
         <p>Already Have Account ?</p>
         <button id="signInButton">Sign In</button>
       </div>
     </div>
-
+<!------------------- login form -------------------------->
   <div class="container" id="signIn">
         <h1 class="form-title">Sign In</h1>
         <form method="post" action="">
@@ -56,7 +78,7 @@
           <div class="input-group">
               <i class="fas fa-envelope"></i>
               <input type="email"  id="email" placeholder="Email" required>
-              <label for="email">Email</label>
+              <label for="email">Email</label> <!------------------- nombrar email -------------------------->
           </div>
           <div class="input-group">
               <i class="fas fa-lock"></i>
@@ -68,12 +90,10 @@
           </p>
          <button  class="btn"  id="submitSignIn">Sign In</button>
         </form>
-        <p class="or">
-          ----------or--------
-        </p>
+       
         <div class="icons">
-          <i class="fab fa-google"></i>
-          <i class="fab fa-facebook"></i>
+          
+          
         </div>
         <div class="links">
           <p>Don't have account yet?</p>
@@ -82,4 +102,4 @@
       </div>
       <script src="script.js"></script>
 </body>
-</html>
+</html> 
